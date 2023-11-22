@@ -1,0 +1,20 @@
+No. 12
+si vede un SYN verso 192.168.200.150 (metasploitable) porta 23
+No. 13 (immediatamente dopo a distanza di tempo)
+si vede un SYN verso metasploitable:111
+...
+:443, :554, :135, :993, :21 sono tutti a distanza di tempo trascurabile
+==> port scan
+
+:23, :111, rispondono SYN+ACK
+
+Dalla sezione "conversations" si vede che un host comunica con 1026 porte diverse. Di default `nmap` effettua una scansione verso 1000 porte. Inoltre, alla maggior parte di queste porte corrispondono una coppia di pacchetti: una dall'host verso metasploitable, e un altro da metasploitable verso l'host.
+Andando a vedere i pacchetti si vede che questi corrispondono rispettivamente a SYN e RST+ACK.
+Alle porte 445, 53,21, 23, 513,512, 139, 514, 80, 22,111, 25 corrispondono invece 3 pacchetti verso metasploitable e uno verso l'host.
+
+Analizzando la porta 445 (SMB) (No. 45, 57, 75, 80) si vede che la conversazione che avviene è la seguente ('H' = "Host", "M" = "Metasploitable"):
+H -> M:	SYN
+M -> H: SYN+ACK
+H -> M: ACK
+H -> M: RST+ACK
+, ovvero una scansione dove la stretta di mano a tre vie è compiuta.
