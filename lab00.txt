@@ -8,7 +8,7 @@ si vede un SYN verso metasploitable:111
 
 :23, :111, rispondono SYN+ACK
 
-Dalla sezione "conversations" si vede che un host comunica con 1026 porte diverse. Di default `nmap` effettua una scansione verso 1000 porte. Inoltre, alla maggior parte di queste porte corrispondono una coppia di pacchetti: una dall'host verso metasploitable, e un altro da metasploitable verso l'host.
+Dalla sezione "conversations" si vede che l'host comunica con le prime 1024 porte, ovvero tutte quelle riservate. Inoltre, alla maggior parte di queste porte corrispondono una coppia di pacchetti: una dall'host verso metasploitable, e un altro da metasploitable verso l'host.
 Andando a vedere i pacchetti si vede che questi corrispondono rispettivamente a SYN e RST+ACK.
 Alle porte 445, 53,21, 23, 513,512, 139, 514, 80, 22,111, 25 corrispondono invece 3 pacchetti verso metasploitable e uno verso l'host.
 
